@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  --font-punk: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+
+  --punk-black: #0b0b0d;
+  --punk-charcoal: #121214;
+  --punk-cream: #f8f5e8;
+  --punk-red: #c9142f;
+  --punk-yellow: #f5c518;
+  --punk-cyan: #2de2e6;
+  --punk-magenta: #ff2e88;
+  --punk-grid: rgba(248, 245, 232, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-punk);
+  background: var(--punk-black);
+  color: var(--punk-cream);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Full-bleed root */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Punk background layers */
+.punk-bg {
+  background:
+    linear-gradient(135deg, rgba(201, 20, 47, 0.08) 0%, rgba(11, 11, 13, 0.95) 45%),
+    repeating-linear-gradient(135deg, rgba(248, 245, 232, 0.03) 0 2px, transparent 2px 8px),
+    var(--punk-black);
+}
+
+.punk-grid {
+  background-image:
+    linear-gradient(90deg, var(--punk-grid) 1px, transparent 1px),
+    linear-gradient(180deg, var(--punk-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.punk-scanlines::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.25) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  z-index: 40;
+}
+
+.punk-noise::after {
+  content: '';
+  position: fixed;
+  inset: -50%;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  z-index: 30;
+}
+
+/* Punk components */
+.punk-panel {
+  background: var(--punk-charcoal);
+  border: 2px solid var(--punk-cream);
+  box-shadow: 8px 8px 0 var(--punk-red);
+}
+
+.punk-outline {
+  border: 2px solid var(--punk-cream);
+  box-shadow: 6px 6px 0 var(--punk-black);
+}
+
+.punk-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-weight: 600;
+  color: var(--punk-yellow);
+  font-size: 0.75rem;
+}
+
+.punk-title {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.punk-pill {
+  border: 2px solid var(--punk-cream);
+  padding: 0.4rem 0.8rem;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+}
+
+.punk-divider {
+  height: 6px;
+  background: var(--punk-red);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--punk-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--punk-red);
+}
+
